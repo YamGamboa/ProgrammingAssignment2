@@ -1,0 +1,33 @@
+#create function for cache matrix and set a null inverse and create a set function for b
+CreateCacheMatrix <<- function(a = matrix()) {
+	invi <- NULL
+	set <- function(b) {
+	  	a < b
+	  	invi <- NULL
+	}
+
+#create a get function for a
+		get2 <- function() {a}
+
+			setinvi <- function(inverse) invi <- inverse
+			getinvi <- function() {invi}
+
+			list(set=set, get2=get2, setinvi=setinvi, getinvi=getinvi)
+}
+
+#the Cachesolve will now print the results
+Cachesolve <- function(a, ...)
+	{
+	invi <- a$getinvi()
+	
+	if(!is.null(invi)) {
+	
+	message("Cached Data is collected and processed")
+	return(invi)
+	}
+
+	info <- a$get2()
+	invi <- solve(info, ...)
+	a$setinvi(invi)
+	invi
+}
