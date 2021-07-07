@@ -26,8 +26,8 @@ Cachesolve <- function(x, ...)
 	return(invi)
 	}
 
-	data <- a$get2()
-	invi <- solve(data, ...)
-	a$setinv(invi)
+	info <- a$get2()
+	invi <- solve(info, ...)
+	a$setinvi(invi)
 	invi
 }
